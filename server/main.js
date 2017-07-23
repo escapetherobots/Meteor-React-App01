@@ -1,5 +1,8 @@
-import someDefault, {greetUser, name } from './../imports/utils';
+import {Meteor} from 'meteor/meteor';
+import {Players} from './../imports/api/players';
 
-console.log('Log:: meteor server side:');
-console.log(greetUser(name));
-console.log('some default: ', someDefault);
+Meteor.startup( () => {
+  
+
+  console.log(Players.find().fetch());
+});
