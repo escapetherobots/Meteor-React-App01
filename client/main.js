@@ -23,6 +23,9 @@ const MyListItem = styled.li`
       background-color: #666666;
     }
   }
+  display: grid;
+
+  grid-template-columns: auto-fill 150px 150px 150px;
   font-size: 1.5em;
   border: 1px solid #006699;
   border-radius: 6px;
@@ -30,6 +33,26 @@ const MyListItem = styled.li`
   padding: 6px 10px;
   background-color: #33ccff;
   color: white;
+`;
+
+const ListItemButton = styled.button`
+    grid-column-start: 4;
+    grid-column-end: 4;
+    width: 50px;
+    padding: 8px 4px 12px;
+    border-radius: 100%;
+    border: 1px solid #777;
+    color: #777;
+    margin: 8px;
+    font-size: 1.5rem;
+    background-color: transparent;
+
+    &:hover ${ListItemButton} {
+      background-color: inherit;
+      border: 1px solid white;
+      color: white;
+    }
+
 `;
 
 // const players = [
@@ -55,13 +78,7 @@ const MyListItem = styled.li`
 //   },
 // ];
 
-const renderItems = (list) => {
-  return list.map( (item) => {
-    return (
-      <MyListItem key={item._id}>{item.name}:: {item.score}</MyListItem>
-    );
-  });
-}
+
 
 
 const handleSubmit = e => {
@@ -72,8 +89,34 @@ const handleSubmit = e => {
   if(playerName){
     e.target.playerName.value = '';
     e.target.playerScore.value = 0;
-    Players.insert({name: playerName, score: playerScore});
+    e.target.playerName.focus();
+    Players.insert({name: playerName, score: Number(playerScore)});
   }
+}
+
+const handleIncrement = (event) => {
+  const targetId = event.currentTarget.dataset.id;
+  Players.update(targetId, {$inc: {score: 1}});
+};
+const handleDecrement = (event) => {
+  const targetId = event.currentTarget.dataset.id;
+  Players.update(targetId, {$inc: {score: -1}});
+};
+
+const handleRemove = (event) => Players.remove({_id: event.currentTarget.dataset.id});
+
+
+const renderItems = (list) => {
+  return list.map( (item) => {
+    return (
+      <MyListItem key={item._id}>
+        {item.name}:: {item.score}
+        <ListItemButton data-id={item._id} onClick={handleIncrement}>+</ListItemButton>
+        <ListItemButton data-id={item._id} onClick={handleDecrement}>-</ListItemButton>
+        <ListItemButton data-id={item._id} onClick={handleRemove}>x</ListItemButton>
+      </MyListItem>
+    );
+  });
 }
 
 // start meteor
