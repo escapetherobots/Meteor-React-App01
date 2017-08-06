@@ -1,0 +1,24 @@
+.player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player__details {
+
+}
+
+.player__name {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.0rem;
+}
+
+.player__stats {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.player__actions {
+  flex-shrink: 0;
+}

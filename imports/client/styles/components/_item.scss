@@ -1,0 +1,21 @@
+.item {
+  background: white;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  margin-bottom: 1.3rem;
+  padding: 1.3rem;
+}
+
+
+// BEM -Block, Element, Modifier
+.item__message{
+  color: #333333;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
+}
+
+.item__message--empty {
+  color: #999999;
+}

@@ -1,8 +1,8 @@
 import {Meteor} from 'meteor/meteor';
-import {Players} from './../imports/api/players';
+import {PlayersData} from './../imports/api/playersData';
 
 Meteor.startup( () => {
-  
 
-  console.log(Players.find().fetch());
+
+  console.log(PlayersData.find().fetch());
 });
