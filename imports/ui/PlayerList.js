@@ -3,6 +3,8 @@ import Player from './Player';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import FlipMove from 'react-flip-move';
+
 //===============================================
 //Styled Components
 //===============================================
@@ -40,7 +42,9 @@ class PlayerList extends React.Component {
     return (
       <div className="item">
         <MyList>
-          {this.renderPlayers()}
+          <FlipMove maintainContainerHeight={true}>
+            {this.renderPlayers()}
+          </FlipMove>
         </MyList>
       </div>
     );

@@ -62,13 +62,16 @@ class Player extends React.Component{
   }
 
   render() {
-    let {_id, name, score} = this.props.player;
+    let {_id, name, score, rank, position} = this.props.player;
+    let itemClassName = `item item--position-${rank}`;
     return (
-      <MyListItem key={_id}>
+      <li key={_id} className={itemClassName}>
         <div className="player">
           <div className="player__details">
             <h3 className="player__name">{name}</h3>
-            <p className="player__stats">{score} Points</p>
+            <p className="player__stats">
+              {position} {score} Points
+            </p>
           </div>
           <div className="player__actions">
             <ListItemButton className="button button--round" data-id={_id} onClick={this.onIncrement.bind(this)}>+</ListItemButton>
@@ -77,7 +80,7 @@ class Player extends React.Component{
           </div>
         </div>
 
-      </MyListItem>
+      </li>
     );
   }
 }

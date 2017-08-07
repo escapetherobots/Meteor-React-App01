@@ -20,8 +20,11 @@ class AddPlayer extends React.Component {
   }
 
   render(){
+    console.log(this.props.children);
+    let myVar = this.props.children;
     return (
       <div className="item">
+        {myVar}
         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" className="form__input" name="playerName" placeholder="Player Name" required="required" />
           <input type="number" name="playerScore" required="required" />

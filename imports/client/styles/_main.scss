@@ -32,6 +32,20 @@ h1 {
   font-size: 3.0rem;
 }
 
+ul {
+  list-style: none;
+}
+ul li {
+  border: 1px solid lightgray;
+  padding:10px;
+  border-radius:6px;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: lightgray;
+  }
+
+
+}
 
 @import './components/title-bar';
 @import './components/item';
